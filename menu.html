@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manila Brew — Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blush:#F6E5DD;
+    --blush-deep:#EFD7CD;
+    --paper:#FFFDFB;
+    --panel:#FBF1EC;
+    --red:#7C2D2D;
+    --red-soft:#9A4A3F;
+    --ink:#4A3B34;
+    --muted:#A4938A;
+    --line:#E7D3C9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Quicksand',sans-serif;background:var(--blush);
+    color:var(--ink);-webkit-font-smoothing:antialiased;padding:28px 16px;
+  }
+  .menu{
+    width:794px;max-width:100%;margin:0 auto;background:var(--paper);
+    border-radius:30px;padding:46px 44px 40px;position:relative;overflow:hidden;
+    box-shadow:0 40px 80px -40px rgba(124,45,45,.35);
+  }
+  .top-icons{display:flex;justify-content:center;gap:18px;margin-bottom:10px}
+  .header{text-align:center;padding-bottom:22px;border-bottom:2px dotted var(--line);margin-bottom:30px}
+  .brand{font-family:'Pacifico',cursive;font-size:46px;color:var(--red);line-height:1;margin-bottom:8px}
+  .tagline{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .hearts{color:var(--red-soft);font-size:14px;margin-top:2px}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;
+    font-weight:700;font-size:14px;letter-spacing:.4px;padding:7px 16px 7px 12px;border-radius:100px;
+    margin-bottom:6px;
+  }
+  .pill svg{flex:none}
+  .sec{margin-bottom:26px}
+  .size-head{
+    display:flex;justify-content:flex-end;gap:30px;font-size:11px;font-weight:700;
+    color:var(--red-soft);letter-spacing:1px;padding:0 4px 6px;border-bottom:1px dotted var(--line);margin-bottom:6px;
+  }
+  .size-head .lbl{margin-right:auto;color:var(--muted);font-size:10px;letter-spacing:1.5px;text-transform:uppercase}
+  .size-head span{width:34px;text-align:center}
+  .row{display:flex;align-items:baseline;gap:8px;padding:5px 4px}
+  .row .name{font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap}
+  .row .sub{font-size:10.5px;color:var(--muted);font-weight:500}
+  .row .dots{flex:1;border-bottom:1.5px dotted var(--line);transform:translateY(-3px);min-width:10px}
+  .row .prices{display:flex;gap:30px}
+  .row .prices span{width:34px;text-align:center;font-size:13.5px;font-weight:600;color:var(--red-soft)}
+  .row .single{font-size:13.5px;font-weight:700;color:var(--red-soft)}
+  .mini{font-weight:700;font-size:12px;color:var(--red);letter-spacing:.5px;text-transform:uppercase;margin:14px 0 2px 2px;display:flex;align-items:center;gap:6px}
+  .panel{background:var(--panel);border-radius:22px;padding:20px 20px 16px;margin-bottom:26px}
+  .sinkers{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .sinkers .chip{background:#fff;border:1px solid var(--line);border-radius:100px;padding:6px 13px;font-size:12px;font-weight:600;color:var(--ink)}
+  .addnote{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;font-weight:700;font-size:12px;padding:5px 12px;border-radius:100px;margin-top:10px}
+  .logo-img{width:min(320px,72%);height:auto;margin:4px auto 10px;display:block}
+  .socials{display:flex;justify-content:center;gap:14px;margin-top:14px}
+  .socials a{
+    width:34px;height:34px;border-radius:50%;background:var(--red);
+    display:flex;align-items:center;justify-content:center;text-decoration:none;
+    transition:transform .15s ease,background .2s ease;
+  }
+  .socials a:hover{transform:translateY(-2px);background:var(--red-soft)}
+  .socials svg{width:17px;height:17px;fill:#fff}
+  .handle{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1px;margin-top:8px}
+  .photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px}
+  .photo-strip.bottom{margin-bottom:0;margin-top:32px}
+  .photo-strip .frame.wide{aspect-ratio:16/10}
+  .frame{
+    aspect-ratio:1/1;border-radius:20px;overflow:hidden;position:relative;
+    background:var(--panel);border:2px dashed var(--line);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .frame img{width:100%;height:100%;object-fit:cover;display:block}
+  .frame .ph{display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--muted);font-size:10px;font-weight:600;text-align:center;padding:6px}
+  .frame .ph svg{width:24px;height:24px;stroke:var(--muted);fill:none;stroke-width:1.5}
+  .frame.has-img{border:none}
+  @media(max-width:680px){.photo-strip{grid-template-columns:repeat(2,1fr)}}
+  .foot{text-align:center;margin-top:26px;padding-top:20px;border-top:2px dotted var(--line);font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.6px}
+  .foot .ig{color:var(--red-soft)}
+  .back{position:fixed;top:18px;left:18px;z-index:5;background:var(--red);color:#fff;text-decoration:none;font-family:'Quicksand',sans-serif;font-weight:700;font-size:13px;padding:10px 18px;border-radius:100px;box-shadow:0 10px 24px -10px rgba(124,45,45,.6)}
+  @media print{
+    body{background:#fff;padding:0}
+    .menu{box-shadow:none;border-radius:0;width:100%}
+    .back{display:none}
+  }
+  @media(max-width:680px){
+    .menu{padding:30px 22px}
+    .cols{grid-template-columns:1fr;gap:18px}
+    .brand{font-size:38px}
+  }
+</style>
+</head>
+<body>
+<a class="back" href="index.html">← Back</a>
+<div class="menu">
+  <div class="top-icons">
+    <svg width="22" height="30" viewBox="0 0 22 30"><path d="M4 9h14l-1.5 17a3 3 0 0 1-3 2.7H8.5a3 3 0 0 1-3-2.7L4 9Z" fill="none" stroke="#7C2D2D" stroke-width="1.6"/><path d="M8 4l1-2h4l1 2" fill="none" stroke="#7C2D2D" stroke-width="1.6" stroke-linecap="round"/><circle cx="9" cy="24" r="1.4" fill="#7C2D2D"/><circle cx="13" cy="24" r="1.4" fill="#7C2D2D"/></svg>
+    <svg width="26" height="32" viewBox="0 0 26 32"><path d="M5 10h16l-1.7 18a3 3 0 0 1-3 2.7H9.7a3 3 0 0 1-3-2.7L5 10Z" fill="none" stroke="#7C2D2D" stroke-width="1.6"/><path d="M10 4l1-2h4l1 2" fill="none" stroke="#7C2D2D" stroke-width="1.6" stroke-linecap="round"/><circle cx="11" cy="26" r="1.5" fill="#7C2D2D"/><circle cx="15" cy="26" r="1.5" fill="#7C2D2D"/></svg>
+    <svg width="30" height="36" viewBox="0 0 30 36"><path d="M6 11h18l-1.9 20a3 3 0 0 1-3 2.7H10.9a3 3 0 0 1-3-2.7L6 11Z" fill="none" stroke="#7C2D2D" stroke-width="1.6"/><path d="M12 4l1-2h4l1 2" fill="none" stroke="#7C2D2D" stroke-width="1.6" stroke-linecap="round"/><circle cx="13" cy="29" r="1.6" fill="#7C2D2D"/><circle cx="17" cy="29" r="1.6" fill="#7C2D2D"/></svg>
+  </div>
+  <div class="header">
+    <img class="logo-img" src="images/logo.png" alt="Manila Brew">
+    <div class="tagline">The best you knew is Manila Brew</div>
+    <div class="hearts">♡ ♥ ♡</div>
+    <div class="socials">
+      <a href="https://facebook.com/manilabrewph" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/manilabrewph" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 2.1.1 3.3c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-3.3s0-2.1-.1-3.3c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm6.2-8.3a1.1 1.1 0 1 1-2.3 0 1.1 1.1 0 0 1 2.3 0Z"/></svg>
+      </a>
+      <a href="https://tiktok.com/@manilabrewph" aria-label="TikTok" title="TikTok" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M16.5 3c.3 2.1 1.5 3.6 3.5 3.8v2.4c-1.2.1-2.4-.3-3.5-1v5.9c0 3.3-2.5 5.6-5.5 5.6-2.9 0-5.2-2.2-5.2-5 0-3 2.4-5 5.3-4.9.3 0 .5 0 .8.1v2.5c-.3-.1-.5-.1-.8-.1-1.4 0-2.5 1-2.5 2.4 0 1.4 1.1 2.4 2.4 2.4 1.4 0 2.6-1 2.6-2.9V3h2.6Z"/></svg>
+      </a>
+    </div>
+    <div class="handle">@manilabrewph</div>
+  </div>
+  <div class="photo-strip top">
+    <div class="frame has-img"><img src="images/coffee-caramel-macchiato.jpg" alt="Caramel Macchiato"></div>
+    <div class="frame has-img"><img src="images/coffee-spanish-latte.jpg" alt="Spanish Latte"></div>
+    <div class="frame has-img"><img src="images/coffee-vanilla-latte.jpg" alt="Vanilla Latte"></div>
+  </div>
+  <div class="cols">
+    <div>
+      <div class="sec">
+        <div class="pill">
+          <svg width="16" height="18" viewBox="0 0 16 18"><path d="M2 5h12l-1 11a2.5 2.5 0 0 1-2.5 2.2H5.5A2.5 2.5 0 0 1 3 16L2 5Z" fill="none" stroke="#fff" stroke-width="1.4"/></svg>
+          Coffee
+        </div>
+        <div class="size-head"><span class="lbl">Hot or iced</span><span>S</span><span>M</span><span>L</span></div>
+        <div class="row"><span class="name">Americano</span><span class="dots"></span><span class="prices"><span>120</span><span>130</span><span>140</span></span></div>
+        <div class="row"><span class="name">Hazelnut Americano</span><span class="dots"></span><span class="prices"><span>125</span><span>135</span><span>145</span></span></div>
+        <div class="row"><span class="name">Iced Latte</span><span class="dots"></span><span class="prices"><span>130</span><span>140</span><span>150</span></span></div>
+        <div class="row"><span class="name">Vanilla Latte</span><span class="dots"></span><span class="prices"><span>140</span><span>150</span><span>160</span></span></div>
+        <div class="row"><span class="name">Hazelnut Latte</span><span class="dots"></span><span class="prices"><span>145</span><span>155</span><span>165</span></span></div>
+        <div class="row"><span class="name">Spanish Latte</span><span class="dots"></span><span class="prices"><span>150</span><span>160</span><span>170</span></span></div>
+        <div class="row"><span class="name">Caramel Macchiato</span><span class="dots"></span><span class="prices"><span>145</span><span>155</span><span>165</span></span></div>
+        <div class="row"><span class="name">Iced Mocha</span><span class="dots"></span><span class="prices"><span>150</span><span>160</span><span>170</span></span></div>
+        <div class="mini">♡ Non-Coffee</div>
+        <div class="row"><span class="name">Iced Chocolate</span><span class="dots"></span><span class="prices"><span>150</span><span>160</span><span>170</span></span></div>
+      </div>
+      <div class="sec">
+        <div class="pill">
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1l1.8 4.2 4.6.4-3.5 3 1.1 4.5L8 10.8 3.9 13.1 5 8.6 1.5 5.6l4.6-.4L8 1Z" fill="none" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          Manila Brew Special
+        </div>
+        <div class="size-head"><span class="lbl">One size</span></div>
+        <div class="row"><span class="name">Coffee Cloud</span><span class="dots"></span><span class="single">170</span></div>
+        <div class="row"><span class="name">Ube Latte</span><span class="dots"></span><span class="single">170</span></div>
+        <div class="row"><span class="name">Under the Sea</span><span class="dots"></span><span class="single">170</span></div>
+      </div>
+      <div class="sec">
+        <div class="pill">
+          <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.4" fill="none" stroke="#fff" stroke-width="1.4"/><path d="M8 4.5c1.4 1 1.4 2.6 0 3.5-1.4 1-1.4 2.5 0 3.5" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Matcha
+        </div>
+        <div class="size-head"><span class="lbl">One size</span></div>
+        <div class="row"><span class="name">Matcha Latte</span><span class="dots"></span><span class="single">200</span></div>
+        <div class="row"><span class="name">Matcha Cloud</span><span class="dots"></span><span class="single">220</span></div>
+        <div class="row"><span class="name">Ube Matcha</span><span class="dots"></span><span class="single">220</span></div>
+        <div class="row"><span class="name">Strawberry Matcha</span><span class="dots"></span><span class="single">230</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="panel">
+        <div class="pill">
+          <svg width="16" height="18" viewBox="0 0 16 18"><path d="M2 5h12l-1 11a2.5 2.5 0 0 1-2.5 2.2H5.5A2.5 2.5 0 0 1 3 16L2 5Z" fill="none" stroke="#fff" stroke-width="1.4"/><circle cx="6.5" cy="14.5" r="1" fill="#fff"/><circle cx="9.5" cy="14.5" r="1" fill="#fff"/></svg>
+          Milk Tea
+        </div>
+        <div class="size-head"><span class="lbl">with pearls +0</span><span>M</span><span>L</span></div>
+        <div class="row"><span class="name">Classic Milk Tea</span><span class="dots"></span><span class="prices"><span>80</span><span>90</span></span></div>
+        <div class="row"><span class="name">Taro Milk Tea</span><span class="dots"></span><span class="prices"><span>100</span><span>115</span></span></div>
+        <div class="row"><span class="name">Caramel Milk Tea</span><span class="dots"></span><span class="prices"><span>100</span><span>115</span></span></div>
+        <div class="row"><span class="name">Wintermelon MT</span><span class="dots"></span><span class="prices"><span>100</span><span>115</span></span></div>
+        <div class="row"><span class="name">Brown Sugar MT</span><span class="dots"></span><span class="prices"><span>100</span><span>115</span></span></div>
+        <div class="mini">♡ With Pearl</div>
+        <div class="row"><span class="name">Classic w/ Pearl</span><span class="dots"></span><span class="prices"><span>90</span><span>100</span></span></div>
+        <div class="row"><span class="name">Taro w/ Pearl</span><span class="dots"></span><span class="prices"><span>110</span><span>120</span></span></div>
+        <div class="row"><span class="name">Caramel w/ Pearl</span><span class="dots"></span><span class="prices"><span>110</span><span>120</span></span></div>
+        <div class="row"><span class="name">Wintermelon Pearl</span><span class="dots"></span><span class="prices"><span>110</span><span>120</span></span></div>
+        <div class="row"><span class="name">Brown Sugar Pearl</span><span class="dots"></span><span class="prices"><span>110</span><span>120</span></span></div>
+        <div class="row"><span class="name">Matcha Milk Tea</span><span class="dots"></span><span class="prices"><span>110</span><span>120</span></span></div>
+      </div>
+      <div class="panel">
+        <div class="pill">
+          <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="9" r="5.5" fill="none" stroke="#fff" stroke-width="1.4"/><path d="M8 3.5c0-1.5 1.4-2 2.4-1.6" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Fruit Tea
+        </div>
+        <div class="size-head"><span class="lbl">refreshing</span><span>M</span><span>L</span></div>
+        <div class="row"><span class="name">Lychee</span><span class="dots"></span><span class="prices"><span>90</span><span>105</span></span></div>
+        <div class="row"><span class="name">Strawberry</span><span class="dots"></span><span class="prices"><span>90</span><span>105</span></span></div>
+        <div class="row"><span class="name">Passion Fruit</span><span class="dots"></span><span class="prices"><span>90</span><span>105</span></span></div>
+        <div class="row"><span class="name">Mixed Berries</span><span class="dots"></span><span class="prices"><span>90</span><span>105</span></span></div>
+      </div>
+      <div class="panel">
+        <div class="pill">
+          <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="5" cy="11" r="2" fill="#fff"/><circle cx="10" cy="11" r="2" fill="#fff"/><circle cx="7.5" cy="6.5" r="2" fill="#fff"/></svg>
+          Add-on Sinkers
+        </div>
+        <div class="sinkers">
+          <span class="chip">Coconut Jelly</span>
+          <span class="chip">Pearl Jelly</span>
+          <span class="chip">Rainbow Jelly</span>
+          <span class="chip">Popping Boba</span>
+          <span class="chip">Coffee Jelly</span>
+        </div>
+        <div class="addnote">＋ Add any sinker · +20</div>
+      </div>
+    </div>
+  </div>
+  <div class="photo-strip bottom">
+    <div class="frame has-img"><img src="images/fruit-strawberry.jpg" alt="Strawberry Fruit Tea"></div>
+    <div class="frame has-img"><img src="images/matcha-latte.jpg" alt="Matcha Latte"></div>
+    <div class="frame has-img"><img src="images/milktea-brown-sugar.jpg" alt="Brown Sugar Milk Tea"></div>
+  </div>
+  <div class="foot">
+    Mobile coffee cart for weddings · events · celebrations<br>
+    <span class="ig">f /manilabrewph &nbsp; · &nbsp; ⌾ @manilabrewph &nbsp; · &nbsp; ♪ @manilabrewph</span>
+  </div>
+</div>
+</body>
+</html>
